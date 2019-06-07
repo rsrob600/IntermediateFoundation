@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Intermediate Foundation</title>
+</head>
+
+<body>
+
+
+    <script>
+        /*<<<----------------------------------------------------------->>>
+        <<<------------------------------------------------------------>>>*/
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        <-- 1. Sigma - Implement function sigma(num) that, given a number, returns the sum of all positive 
+        integers up to the given number (inclusive).  Ex: sigma(3) = 6 (or 1+2+3); sigma(5) = 15 (or 1+2+3+4+5). -->
+        <<<------------------------------------------------------------>>>*/
+        var sig = 0;
+
+        function sigma(s) {
+            for (var i = s; i > 0; i--) {
+                sig += i;
+            }
+            return sig;
+        }
+        //console.log(sigma(3));
+        // 6
+        console.log(sigma(5));
+        // 15
+
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        <!-- 2. Factorial - Write a function factorial(num) that, given a number, returns the product (multiplication)
+             of all positive integers from 1 up to the given number (inclusive).  For example, factorial(3) = 6 (or 1*2*3);
+              factorial(5) = 120 (or 1*2*3*4*5). -->
+
+        var fac = 1;
+
+        function factorial(f){
+            for(var i=f; i > 0; i--){
+                fac *= i;
+            }
+            return fac;
+        }
+        console.log(factorial(3));
+        // 6
+        //console.log(factorial(5));
+        // 120
+        //console.log(factorial(10));
+        // 3628800
+        <<<------------------------------------------------------------>>>*/
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        <!-- 3. Fibonacci - Create a function to generate Fibonacci numbers.  In this famous mathematical sequence, each 
+            number is the sum of the previous two, starting with values 0 and 1.  Your function should accept one argument, an
+             index into the sequence (where 0 corresponds to the initial value, 4 corresponds to the value four later, etc). 
+              Examples: fibonacci(0) = 0 (given), fibonacci(1) = 1 (given), fibonacci(2) = 1 (fib(0)+fib(1), or 0+1), 
+              fibonacci(3) = 2 (fib(1) + fib(2)3, or 1+1), fibonacci(4) = 3 (1+2), fibonacci(5) = 5 (2+3), fibonacci(6) = 8 (3+5),
+               fibonacci(7) = 13 (5+8).  Do this without using recursion first.  If you don't know what a recursion is yet, don't worry 
+               as we'll be introducing this concept in Part 2 of this assignment. -->
+
+        var z = [];
+
+        function fib(f){
+        for(var i = 0; i<=f; i++){
+            if(i<2){
+            z.push(i);
+            }
+            else{
+            z[i] = z[i-2]+z[i-1];
+            }
+        }
+        return z[z.length-1];
+        }
+        console.log(fib([7]));
+        <<<------------------------------------------------------------>>>*/
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        <!-- 4. Array: Second-to-Last: Return the second-to-last element of an array. Given [42, true, 4, "Liam", 7], return "Liam". 
+             If array is too short, return null. -->
+
+        function secondToLast(x){
+            for(var i=0; i<x.length; i++){
+              if(x.length > 1){
+                return x[x.length-2];
+              }
+              else{
+                return null;
+              }
+            }
+          }
+          console.log(secondToLast([42, true, 4, "Liam", 7]));
+          // "Liam"
+          //console.log(secondToLast([42, true, 4, "Liam"]));
+          // 4
+          //console.log(secondToLast([42, true, 4]));
+          // true
+          //console.log(secondToLast([42, true]));
+          // 42
+          //console.log(secondToLast([42]));
+          // null
+        <<<------------------------------------------------------------>>>*/
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        <!-- 5. Array: Nth-to-Last: Return the element that is N-from-array's-end.  Given ([5,2,3,6,4,9,7],3), return 4.  
+            If the array is too short, return null.-->
+
+        function ntoLast(x,n){
+            for(var i=0; i<x.length; i++){
+                if(x.length < n){
+                    return null;
+                }
+                else{
+                    return x[x.length-n];
+                }
+            }
+        }
+        console.log(ntoLast([5,2,3,6,4,9,7],8));
+        
+        //console.log(ntoLast([5,2,3,6,4,9,7],3));
+        <<<------------------------------------------------------------>>>*/
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        <!-- 6. Array: Second-Largest: Return the second-largest element of an array. Given [42,1,4,3.14,7], return 7. 
+             If the array is too short, return null. -->
+
+        var max1 = 0;
+        var max2 = 0;
+
+        function secondMax(x) {
+            for (var i = 0; i < x.length; i++) {
+                if (x.length < 3) {
+                    return null;
+                }
+                if (x[i] > max1) {
+                    max2 = max1;
+                    max1 = x[i];
+                    console.log("max1 is " + max1);
+                } else if (x[i] > max2) {
+                    max2 = x[i];
+                    console.log("max2 is " + max2);
+                }
+            }
+            return max2;
+        }
+        console.log(secondMax([42, 1, 4, 3.14, 77.3, 88, 1000.1]));
+        // [42,1,4,3.14,77.3,88,1000.1]
+        <<<------------------------------------------------------------>>>*/
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        <!-- 7. Double Trouble: Create a function that changes a given array to list each existing element twice, retaining original order. 
+             Convert [4, "Ulysses", 42, false] to [4,4, "Ulysses", "Ulysses", 42, 42, false, false]. -->
+
+        function repeatTwice(arr) {
+            var r = [];
+            for (var i = 0; i < arr.length; i++) {
+                for (var k = i; k <= i + 1; k++) {
+                     r[i + k] = arr[i];
+                 }
+             }
+             return r;
+        }
+        console.log(repeatTwice([4, "Ulysses", 42, false]));
+        <<<------------------------------------------------------------>>>*/
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        Assignment Part 2 - 
+        # 1 - Fibonacci with recursion: Create a function Fib(n) where it returns
+         the nth Fibonacci number.  Use recursion for this.
+
+        //Coding Dojo fib nth with recursion
+        function fib(n) {
+            if (n == 0 || n == 1) {
+                return n;
+            }
+            return fib(n - 2) + fib(n - 1);
+        }
+        n = fib(7);
+        console.log(n);
+        // 13
+        <<<------------------------------------------------------------>>>*/
+
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        Assignment Part 2 - 
+        # 2 - Recursive Fill (refer to its own folder)
+        <<<------------------------------------------------------------>>>*/
+
+
+
+
+
+        /*<<<----------------------------------------------------------->>>
+        <<<------------------------------------------------------------>>>*/
+    </script>
+
+</body>
+
+</html>
